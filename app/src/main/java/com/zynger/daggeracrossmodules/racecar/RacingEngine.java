@@ -1,17 +1,16 @@
 package com.zynger.daggeracrossmodules.racecar;
 
 import com.zynger.collaborators.Engine;
+import com.zynger.collaborators.EnginePump;
 
-import javax.inject.Inject;
+public class RacingEngine extends Engine {
 
-public class RacingEngine implements Engine {
-
-    @Inject
-    public RacingEngine() {
+    public RacingEngine(EnginePump pump) {
+        super(pump);
     }
 
     @Override
     public String toString() {
-        return "super fast racing engine";
+        return super.toString() + " (super fast racing engine)";
     }
 }

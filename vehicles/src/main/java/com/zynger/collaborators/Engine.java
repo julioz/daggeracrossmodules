@@ -1,4 +1,14 @@
 package com.zynger.collaborators;
 
-public interface Engine {
+public abstract class Engine {
+    private EnginePump pump;
+
+    public Engine(EnginePump pump) {
+        this.pump = pump;
+    }
+
+    @Override
+    public String toString() {
+        return pump.toString() + "-using";
+    }
 }
