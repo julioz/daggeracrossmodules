@@ -17,6 +17,12 @@ public class FleetApp extends Application {
         this.applicationComponent = buildApplicationComponent();
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        applicationComponent.inject(this);
+    }
+
     private ApplicationComponent buildApplicationComponent() {
         return DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
