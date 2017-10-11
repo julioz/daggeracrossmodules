@@ -9,6 +9,7 @@ import com.zynger.daggeracrossmodules.di.DaggerApplicationComponent;
 
 public class FleetApp extends Application {
 
+    private static FleetApp instance;
     private ApplicationComponent applicationComponent;
 
     @Override
@@ -20,6 +21,8 @@ public class FleetApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
+
         applicationComponent.inject(this);
     }
 
@@ -27,5 +30,13 @@ public class FleetApp extends Application {
         return DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
+    }
+
+    public static ApplicationComponent getApplicationComponent() {
+        if (instance == null || instance.applicationComponent == null) {
+            throw new IllegalStateException(
+                    "Cannot access the app graph before the application has been created");
+        }
+        return instance.applicationComponent;
     }
 }
