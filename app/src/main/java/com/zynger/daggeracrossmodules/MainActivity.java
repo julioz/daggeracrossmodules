@@ -1,9 +1,9 @@
 package com.zynger.daggeracrossmodules;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.zynger.collaborators.Collaborator;
+import com.zynger.collaborators.Car;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Collaborator collaborator = new Collaborator();
+        Car car = new Car(null, null, null);
+        car.start();
     }
 }
