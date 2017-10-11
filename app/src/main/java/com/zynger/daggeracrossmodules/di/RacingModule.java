@@ -2,10 +2,12 @@ package com.zynger.daggeracrossmodules.di;
 
 import com.zynger.collaborators.Car;
 import com.zynger.collaborators.EnginePump;
-import com.zynger.collaborators.GasPump;
+import com.zynger.collaborators.di.EngineModule;
 import com.zynger.daggeracrossmodules.racecar.ChromiumWheelSet;
 import com.zynger.daggeracrossmodules.racecar.LeatherSeat;
 import com.zynger.daggeracrossmodules.racecar.RacingEngine;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -14,12 +16,7 @@ import dagger.Provides;
 public class RacingModule {
 
     @Provides
-    EnginePump provideEnginePump() {
-        return new GasPump();
-    }
-
-    @Provides
-    RacingEngine provideRacingEngine(EnginePump enginePump) {
+    RacingEngine provideRacingEngine(@Named(EngineModule.GAS_PUMP) EnginePump enginePump) {
         return new RacingEngine(enginePump);
     }
 
