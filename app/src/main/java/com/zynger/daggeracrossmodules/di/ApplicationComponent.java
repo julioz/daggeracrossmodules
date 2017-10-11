@@ -6,7 +6,8 @@ import com.zynger.daggeracrossmodules.MainActivity;
 import dagger.Component;
 
 @Component(modules = {
-        ApplicationModule.class
+        ApplicationModule.class,
+        RacingModule.class
 })
 public interface ApplicationComponent {
     void inject(FleetApp fleetApp);
